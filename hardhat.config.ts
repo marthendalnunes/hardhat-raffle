@@ -17,8 +17,8 @@ const RINKEBY_RPC_URL =
   process.env.RINKEBY_RPC_URL ||
   "https://eth-rinkeby.alchemyapi.io/v2/your-api-key";
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const ETHERSCAN_API_KEY =
+  process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -30,6 +30,12 @@ const config: HardhatUserConfig = {
       chainId: 4,
       url: RINKEBY_RPC_URL,
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+    },
+  },
+  etherscan: {
+    apiKey: {
+      rinkeby: ETHERSCAN_API_KEY,
+      kovan: ETHERSCAN_API_KEY,
     },
   },
   solidity: "0.8.8",
