@@ -74,6 +74,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
       revert Raffle__NotOpen();
     }
     s_players.push(payable(msg.sender));
+    emit RaffleEnter(msg.sender);
   }
 
   /**
@@ -134,6 +135,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     address payable recentWinner = s_players[indexOfWinner];
     s_recentWinner = recentWinner;
     s_raffleState = RaffleState.OPEN;
+    s_lastTimestamp = block.timestamp;
     s_players = new address payable[](0);
     (bool success, ) = recentWinner.call{value: address(this).balance}("");
     if (!success) {
@@ -169,5 +171,9 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
   function getLatestTimestamp() public view returns (uint256) {
     return s_lastTimestamp;
+  }
+
+  function getInterval() public view returns (uint256) {
+    return i_interval;
   }
 }
