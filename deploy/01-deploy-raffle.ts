@@ -70,3 +70,4 @@ const deployRaffle: DeployFunction = async function (
 };
 
 export default deployRaffle;
+deployRaffle.tags = ["all", "raffle"];
