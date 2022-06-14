@@ -33,6 +33,7 @@ export interface RaffleInterface extends utils.Interface {
     "checkUpkeep(bytes)": FunctionFragment;
     "enterRaffle()": FunctionFragment;
     "getEntranceFee()": FunctionFragment;
+    "getInterval()": FunctionFragment;
     "getLatestTimestamp()": FunctionFragment;
     "getNumWords()": FunctionFragment;
     "getNumberOfPlayers()": FunctionFragment;
@@ -48,6 +49,7 @@ export interface RaffleInterface extends utils.Interface {
       | "checkUpkeep"
       | "enterRaffle"
       | "getEntranceFee"
+      | "getInterval"
       | "getLatestTimestamp"
       | "getNumWords"
       | "getNumberOfPlayers"
@@ -68,6 +70,10 @@ export interface RaffleInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "getEntranceFee",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getInterval",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -113,6 +119,10 @@ export interface RaffleInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "getEntranceFee",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getInterval",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -219,6 +229,8 @@ export interface Raffle extends BaseContract {
 
     getEntranceFee(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    getInterval(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     getLatestTimestamp(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     getNumWords(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -257,6 +269,8 @@ export interface Raffle extends BaseContract {
 
   getEntranceFee(overrides?: CallOverrides): Promise<BigNumber>;
 
+  getInterval(overrides?: CallOverrides): Promise<BigNumber>;
+
   getLatestTimestamp(overrides?: CallOverrides): Promise<BigNumber>;
 
   getNumWords(overrides?: CallOverrides): Promise<BigNumber>;
@@ -292,6 +306,8 @@ export interface Raffle extends BaseContract {
     enterRaffle(overrides?: CallOverrides): Promise<void>;
 
     getEntranceFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getInterval(overrides?: CallOverrides): Promise<BigNumber>;
 
     getLatestTimestamp(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -353,6 +369,8 @@ export interface Raffle extends BaseContract {
 
     getEntranceFee(overrides?: CallOverrides): Promise<BigNumber>;
 
+    getInterval(overrides?: CallOverrides): Promise<BigNumber>;
+
     getLatestTimestamp(overrides?: CallOverrides): Promise<BigNumber>;
 
     getNumWords(overrides?: CallOverrides): Promise<BigNumber>;
@@ -391,6 +409,8 @@ export interface Raffle extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getEntranceFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    getInterval(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getLatestTimestamp(
       overrides?: CallOverrides
