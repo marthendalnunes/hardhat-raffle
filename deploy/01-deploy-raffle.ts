@@ -7,6 +7,7 @@ import {
   VERIFICATION_BLOCK_CONFIRMATIONS,
 } from "../helper-hardhat-config";
 import verify from "../utils/verify";
+import "dotenv/config";
 
 const VRF_SUB_FUND_AMOUNT = ethers.utils.parseEther("10");
 
